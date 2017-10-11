@@ -1,0 +1,15 @@
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\obj\x86\Debug\Lanetor.frm_home.resources
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\obj\x86\Debug\Lanetor.Properties.Resources.resources
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\obj\x86\Debug\Lanetor.csproj.GenerateResource.Cache
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\bin\Debug\Lanetor.exe
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\bin\Debug\Lanetor.pdb
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\obj\x86\Debug\Lanetor.exe
+c:\users\safvan.me\documents\visual studio 2010\Projects\Lanetor\Lanetor\obj\x86\Debug\Lanetor.pdb
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.exe
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.pdb
+E:\TrueDonor2k17\repo\Lanetor\bin\Debug\Lanetor.exe
+E:\TrueDonor2k17\repo\Lanetor\bin\Debug\Lanetor.pdb
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.csprojResolveAssemblyReference.cache
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.frm_home.resources
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.Properties.Resources.resources
+E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.csproj.GenerateResource.Cache
