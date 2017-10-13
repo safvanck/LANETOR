@@ -536,10 +536,11 @@ namespace Lanetor
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            //input the number
+            //input the number from list
             //key generate
             //save keys (public key: just show saving.. private: save as file)
             //share public key (just show/inform sharing and make available to every1)
+            int i = 0;
         }
 
         private void button4_Click(object sender, EventArgs e)
