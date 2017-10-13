@@ -36,9 +36,9 @@
             this.panel = new System.Windows.Forms.Panel();
             this.processingLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.inputTextBox = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -100,13 +100,15 @@
             this.panel2.Size = new System.Drawing.Size(497, 115);
             this.panel2.TabIndex = 2;
             // 
-            // inputTextBox
+            // button4
             // 
-            this.inputTextBox.Location = new System.Drawing.Point(59, 3);
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(368, 26);
-            this.inputTextBox.TabIndex = 0;
-            this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
+            this.button4.Location = new System.Drawing.Point(352, 72);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 31);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Decrypt";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -118,14 +120,13 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // inputTextBox
             // 
-            this.button4.Location = new System.Drawing.Point(352, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 31);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Decrypt";
-            this.button4.UseVisualStyleBackColor = true;
+            this.inputTextBox.Location = new System.Drawing.Point(59, 3);
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(368, 26);
+            this.inputTextBox.TabIndex = 0;
+            this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
             // 
             // panel3
             // 
