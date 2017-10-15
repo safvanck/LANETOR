@@ -540,6 +540,8 @@ namespace Lanetor
             //key generate
             //save keys (public key: just show saving.. private: save as file)
             //share public key (just show/inform sharing and make available to every1)
+            KeyPairGeneratorForm keygen = new KeyPairGeneratorForm();
+            keygen.Show();
             int i = 0;
         }
 

@@ -92,9 +92,9 @@ namespace Lanetor
 
         private void generateKeysButton_Click(object sender, System.EventArgs e)
         {
-          //  Lanetor.frm_home.SetBitStrength(Convert.ToInt32(numericUpDown.Value));
+           // Lanetor.frm_home.SetBitStrength(Convert.ToInt32(numericUpDown.Value));
           //  this.DialogResult = DialogResult.OK;
-            this.Dispose(true);
+           // this.Dispose(true);
         }
 
         private void KeyPairGeneratorForm_Load(object sender, EventArgs e)
