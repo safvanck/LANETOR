@@ -525,8 +525,7 @@ namespace Lanetor
         private void button3_Click(object sender, EventArgs e)
         {
             //todo
-            Object ob = null;
-            encrypThread.Encrypt(ob);
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -540,8 +539,7 @@ namespace Lanetor
             //key generate
             //save keys (public key: just show saving.. private: save as file)
             //share public key (just show/inform sharing and make available to every1)
-            KeyPairGeneratorForm keygen = new KeyPairGeneratorForm();
-            keygen.Show();
+            
             int i = 0;
         }
 
