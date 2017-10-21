@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        //ccccccccccccccckkkkkkkkkkkk  private System.ComponentModel.IContainer components = null;
+        
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,8 +36,8 @@
             this.panel = new System.Windows.Forms.Panel();
             this.processingLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.decryptButton = new System.Windows.Forms.Button();
+            this.encryptButton = new System.Windows.Forms.Button();
             this.inputTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -92,33 +92,33 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.decryptButton);
+            this.panel2.Controls.Add(this.encryptButton);
             this.panel2.Controls.Add(this.inputTextBox);
             this.panel2.Location = new System.Drawing.Point(93, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(497, 115);
             this.panel2.TabIndex = 2;
             // 
-            // button4
+            // decryptButton
             // 
-            this.button4.Location = new System.Drawing.Point(352, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 31);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Decrypt";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.decryptButton.Location = new System.Drawing.Point(352, 72);
+            this.decryptButton.Name = "decryptButton";
+            this.decryptButton.Size = new System.Drawing.Size(75, 31);
+            this.decryptButton.TabIndex = 2;
+            this.decryptButton.Text = "Decrypt";
+            this.decryptButton.UseVisualStyleBackColor = true;
+            this.decryptButton.Click += new System.EventHandler(this.decryptButton_Click);
             // 
-            // button3
+            // encryptButton
             // 
-            this.button3.Location = new System.Drawing.Point(352, 35);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 31);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Encrypt";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.encryptButton.Location = new System.Drawing.Point(352, 35);
+            this.encryptButton.Name = "encryptButton";
+            this.encryptButton.Size = new System.Drawing.Size(75, 31);
+            this.encryptButton.TabIndex = 1;
+            this.encryptButton.Text = "Encrypt";
+            this.encryptButton.UseVisualStyleBackColor = true;
+            this.encryptButton.Click += new System.EventHandler(this.encryptButton_Click);
             // 
             // inputTextBox
             // 
@@ -177,8 +177,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox inputTextBox;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button encryptButton;
+        private System.Windows.Forms.Button decryptButton;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button5;
 

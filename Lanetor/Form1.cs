@@ -41,7 +41,7 @@ namespace Lanetor
 				StreamReader streamReader = new StreamReader( fileName, true );
 				SetText( streamReader.ReadToEnd() );
 				streamReader.Close();				
-				this.Text = GetFileName( fileName ) + " - RSACryptoPad";
+				this.Text = GetFileName( fileName ) + " - Lanetor";
 				cleanForm = true;
 			}
 		}
@@ -164,7 +164,7 @@ namespace Lanetor
                     }
                     if (fileString != null)
                     {
-                        this.Text = GetFileName(openFileDialog.FileName) + " - RSACryptoPad";
+                        this.Text = GetFileName(openFileDialog.FileName) + " - Lanetor";
                         currentFileName = openFileDialog.FileName;
                     }
                     return fileString;
@@ -185,7 +185,7 @@ namespace Lanetor
                     StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName, false);
                     streamWriter.Write(inputTextBox.Text);
                     streamWriter.Close();
-                    this.Text = GetFileName(saveFileDialog.FileName) + " - RSACryptoPad";
+                    this.Text = GetFileName(saveFileDialog.FileName) + " - Lanetor";
                     currentFileName = saveFileDialog.FileName;
                     return true;
                 }
@@ -252,21 +252,16 @@ namespace Lanetor
                 this.Height = settings.Height;
                 inputTextBox.Font = settings.Font;
                 inputTextBox.WordWrap = settings.Wrapping;
-                //wordWrapMenuItem.Checked = (settings.Wrapping == true) ? true : false;
+                
             }
-            this.Text = GetFileName(currentFileName) + " - RSACryptoPad";
+            this.Text = GetFileName(currentFileName) + " - Lanetor";
             inputTextBox.Focus();
-           // this.Resize += new System.EventHandler(this.mainForm_Resize);
-            //this.Move += new System.EventHandler(this.MainForm_Move);
-           // inputTextBox.Height = this.Size.Height - 53;
-           // inputTextBox.Width = this.Size.Width - 7;
+          
         }
 
         private void frm_home_Resize(object sender, EventArgs e)
         {
-          //  inputTextBox.Height = this.Size.Height - 53;
-          //  inputTextBox.Width = this.Size.Width - 7;
-          //  SaveSettings("SIZE");
+        
         }
 
         private void frm_home_Move(object sender, EventArgs e)
@@ -276,12 +271,11 @@ namespace Lanetor
 
         private void frm_home_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // this.Resize -= new EventHandler(this.mainForm_Resize);
-           // this.Move -= new EventHandler(this.MainForm_Move);
+
             if (!cleanForm)
             {
                 string dialogText = "The text in the " + currentFileName + " file has changed." + Environment.NewLine + Environment.NewLine + "Do you want to save the changes?";
-                switch (MessageBox.Show(dialogText, "RSACryptoPad", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show(dialogText, "Lanetor", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         {
@@ -303,7 +297,7 @@ namespace Lanetor
             if (!cleanForm)
             {
                 string dialogText = "The text in the " + currentFileName + " file has changed." + Environment.NewLine + Environment.NewLine + "Do you want to save the changes?";
-                switch (MessageBox.Show(dialogText, "RSACryptoPad", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show(dialogText, "Lanetor", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         {
@@ -323,22 +317,6 @@ namespace Lanetor
             }
             else
             { Dispose(true); }
-        }
-
-
-        private void wordWrapMenuItem_Click(object sender, EventArgs e)
-        {
-         /*   if (wordWrapMenuItem.Checked == true)
-            {
-                wordWrapMenuItem.Checked = false;
-                inputTextBox.WordWrap = false;
-            }
-            else
-            {
-                wordWrapMenuItem.Checked = true;
-                inputTextBox.WordWrap = true;
-            }
-            SaveSettings("WRAPPING"); */
         }
 
 
@@ -371,11 +349,7 @@ namespace Lanetor
                     panel.Location = point;
                     panel.Visible = true;
                     this.Refresh();
-                   // fileMenuItem.Enabled = false;
-                    //editMenuItem.Enabled = false;
-                   // formatMenuItem.Enabled = false;
-                   // encryptionMenuItem.Enabled = false;
-                   // helpMenuItem.Enabled = false;
+//filemenudisable code omited
                     string tempStorage = inputTextBox.Text;
                     if (fileString != null)
                     {
@@ -432,11 +406,7 @@ namespace Lanetor
                     panel.Location = point;
                     panel.Visible = true;
                     this.Refresh();
-                   // fileMenuItem.Enabled = false;
-                   // editMenuItem.Enabled = false;
-                   // formatMenuItem.Enabled = false;
-                   // encryptionMenuItem.Enabled = false;
-                   // helpMenuItem.Enabled = false;
+                    //filemenudisable code omited
                     if (fileString != null)
                     {
                         try
@@ -465,14 +435,14 @@ namespace Lanetor
                 RSACryptoServiceProvider RSAProvider = new RSACryptoServiceProvider(currentBitStrength);
                 string publicAndPrivateKeys = "<BitStrength>" + currentBitStrength.ToString() + "</BitStrength>" + RSAProvider.ToXmlString(true);
                 string justPublicKey = "<BitStrength>" + currentBitStrength.ToString() + "</BitStrength>" + RSAProvider.ToXmlString(false);
-                if (saveFile("Save Public/Private Keys As", "Public/Private Keys Document( *.kez )|*.kez", publicAndPrivateKeys))
-                { while (!saveFile("Save Public Key As", "Public Key Document( *.pke )|*.pke", justPublicKey)) { ; } }
+                if (saveFile("Save Private Keys As", "Lanetor Private Key( *.kez )|*.kez", publicAndPrivateKeys))
+                { while (!saveFile("Save Public Key As", "Lanetor Public Key( *.pke )|*.pke", justPublicKey)) { ; } }
             }
         }
 
         private void inputTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (currentFileName.Equals("Untitled"))
+            if (currentFileName.Equals("Lanetor***"))
             { cleanForm = (!inputTextBox.Text.Equals("")) ? false : true; }
             else
             { cleanForm = false; }
@@ -490,7 +460,7 @@ namespace Lanetor
             if (!cleanForm)
             {
                 string dialogText = "The text in the " + currentFileName + " file has changed." + Environment.NewLine + Environment.NewLine + "Do you want to save the changes?";
-                switch (MessageBox.Show(dialogText, "RSACryptoPad", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show(dialogText, "Lanetor", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         {
@@ -515,18 +485,13 @@ namespace Lanetor
                     string fileContents = streamReader.ReadToEnd();
                     streamReader.Close();
                     currentFileName = fileNames[0];
-                    this.Text = GetFileName(fileNames[0]) + " - RSACryptoPad";
+                    this.Text = GetFileName(fileNames[0]) + " - Lanetor";
                     SetText(fileContents);
                     cleanForm = true;
                 }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //todo
-            
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -539,14 +504,123 @@ namespace Lanetor
             //key generate
             //save keys (public key: just show saving.. private: save as file)
             //share public key (just show/inform sharing and make available to every1)
-            
-            int i = 0;
+            KeyPairGeneratorForm generator = new KeyPairGeneratorForm();
+            if (generator.ShowDialog() == DialogResult.OK)
+            {
+                RSACryptoServiceProvider RSAProvider = new RSACryptoServiceProvider(currentBitStrength);
+                string publicAndPrivateKeys = "<BitStrength>" + currentBitStrength.ToString() + "</BitStrength>" + RSAProvider.ToXmlString(true);
+                string justPublicKey = "<BitStrength>" + currentBitStrength.ToString() + "</BitStrength>" + RSAProvider.ToXmlString(false);
+                if (saveFile("Save Public/Private Keys As", "Public/Private Keys Document( *.kez )|*.kez", publicAndPrivateKeys))
+                { while (!saveFile("Save Public Key As", "Public Key Document( *.pke )|*.pke", justPublicKey)) {; } }
+            }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+
+
+        private void encryptButton_Click(object sender, EventArgs e)
         {
-            Object ob = null;
-            encrypThread.Decrypt(ob);
+            if (inputTextBox.Text.Length != 0)
+            {
+                openFileDialog.FileName = "";
+                openFileDialog.Title = "Open Public Key File";
+                openFileDialog.Filter = "Public Key Document( *.pke )|*.pke";
+                string fileString = null;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(openFileDialog.FileName))
+                    {
+                        StreamReader streamReader = new StreamReader(openFileDialog.FileName, true);
+                        fileString = streamReader.ReadToEnd();
+                        streamReader.Close();
+                        if (fileString.Length >= inputTextBox.MaxLength)
+                        { MessageBox.Show("ERROR: \nThe file you are trying to open is too big for the text editor to display properly.\nPlease open a smaller document!\nOperation Aborted!"); }
+                    }
+                }
+                if (fileString != null)
+                {
+                    FinishedProcessDelegate finishedProcessDelegate = new FinishedProcessDelegate(FinishedProcess);
+                    UpdateTextDelegate updateTextDelegate = new UpdateTextDelegate(UpdateText);
+                    string bitStrengthString = fileString.Substring(0, fileString.IndexOf("</BitStrength>") + 14);
+                    fileString = fileString.Replace(bitStrengthString, "");
+                    int bitStrength = Convert.ToInt32(bitStrengthString.Replace("<BitStrength>", "").Replace("</BitStrength>", ""));
+                    Point point = new Point((inputTextBox.Size.Width / 2) - (panel.Size.Width / 2), (inputTextBox.Size.Height / 2) - (panel.Size.Height / 2));
+                    panel.Location = point;
+                    panel.Visible = true;
+                    this.Refresh();
+                    //filemenus disabled code omitted
+                    if (fileString != null)
+                    {
+                        try
+                        {
+                            EncryptionThread encryptionThread = new EncryptionThread();
+                            Thread encryptThread = new Thread(encryptionThread.Encrypt);
+                            encryptThread.IsBackground = true;
+                            encryptThread.Start(new Object[] { this, finishedProcessDelegate, updateTextDelegate, inputTextBox.Text, bitStrength, fileString });
+                        }
+                        catch (CryptographicException CEx)
+                        { MessageBox.Show("ERROR: \nOne of the following has occured.\nThe cryptographic service provider cannot be acquired.\nThe length of the text being encrypted is greater than the maximum allowed length.\nThe OAEP padding is not supported on this computer.\n" + "Exact error: " + CEx.Message); }
+                        catch (Exception Ex)
+                        { MessageBox.Show("ERROR: \n" + Ex.Message); }
+                    }
+                }
+            }
+            else
+            { MessageBox.Show("ERROR: You Can Not Encrypt A NULL Value!!!"); }
+        }
+
+        private void decryptButton_Click(object sender, EventArgs e)
+        {
+            if (inputTextBox.Text.Length != 0)
+            {
+                openFileDialog.FileName = "";
+                openFileDialog.Title = "Open Private Key File";
+                openFileDialog.Filter = "Private Key Document( *.kez )|*.kez";
+                string fileString = null;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(openFileDialog.FileName))
+                    {
+                        StreamReader streamReader = new StreamReader(openFileDialog.FileName, true);
+                        fileString = streamReader.ReadToEnd();
+                        streamReader.Close();
+                        if (fileString.Length >= inputTextBox.MaxLength)
+                        { MessageBox.Show("ERROR: \nThe file you are trying to open is too big for the text editor to display properly.\nPlease open a smaller document!\nOperation Aborted!"); }
+                    }
+                }
+                if (File.Exists(openFileDialog.FileName))
+                {
+                    string bitStrengthString = fileString.Substring(0, fileString.IndexOf("</BitStrength>") + 14);
+                    fileString = fileString.Replace(bitStrengthString, "");
+                    int bitStrength = Convert.ToInt32(bitStrengthString.Replace("<BitStrength>", "").Replace("</BitStrength>", ""));
+                    Point point = new Point((inputTextBox.Size.Width / 2) - (panel.Size.Width / 2), (inputTextBox.Size.Height / 2) - (panel.Size.Height / 2));
+                    panel.Location = point;
+                    panel.Visible = true;
+                    this.Refresh();
+                    //menu item disabled code omited
+                    string tempStorage = inputTextBox.Text;
+                    if (fileString != null)
+                    {
+                        FinishedProcessDelegate finishedProcessDelegate = new FinishedProcessDelegate(FinishedProcess);
+                        UpdateTextDelegate updateTextDelegate = new UpdateTextDelegate(UpdateText);
+                        try
+                        {
+                            EncryptionThread decryptionThread = new EncryptionThread();
+                            Thread decryptThread = new Thread(decryptionThread.Decrypt);
+                            decryptThread.IsBackground = true;
+                            decryptThread.Start(new Object[] { this, finishedProcessDelegate, updateTextDelegate, inputTextBox.Text, bitStrength, fileString });
+                        }
+                        catch (CryptographicException CEx)
+                        { MessageBox.Show("ERROR: \nOne of the following has occured.\nThe cryptographic service provider cannot be acquired.\nThe length of the text being encrypted is greater than the maximum allowed length.\nThe OAEP padding is not supported on this computer.\n" + "Exact error: " + CEx.Message); }
+                        catch (Exception Ex)
+                        {
+                            MessageBox.Show("ERROR:\n" + Ex.Message);
+                            SetText(tempStorage);
+                        }
+                    }
+                }
+            }
+            else
+            { MessageBox.Show("ERROR: You Can Not Decrypt A NULL Value!!!"); }
         }
     }
 }
