@@ -13,4 +13,3 @@ E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.csprojResolveAssemblyReferen
 E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.frm_home.resources
 E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.Properties.Resources.resources
 E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.csproj.GenerateResource.Cache
-E:\TrueDonor2k17\repo\Lanetor\obj\x86\Debug\Lanetor.KeyPairGeneratorForm.resources

@@ -9,22 +9,32 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Net;
+using System.Net.Sockets;
 
 //using System.Xml.Serialization;
 namespace Lanetor
 {
     public partial class frm_home : Form
     {
+        
+
+        string myIP, RemoIP, myPort,RemoPort;
+        EndPoint epLocal, epRemote;
+        byte[] buffer;
+        Socket sck;
 
         private IContainer components;
         private Label processingLabel;
         private OpenFileDialog openFileDialog;
         private Panel panel;
+        
         private SaveFileDialog saveFileDialog;
 
         public static int currentBitStrength = 0;
         private bool cleanForm = true;
         private string currentFileName = "Untitled";
+        
 
         public delegate void FinishedProcessDelegate();
         public delegate void UpdateBitStrengthDelegate(int bitStrength);
@@ -34,6 +44,7 @@ namespace Lanetor
 
         public frm_home( string fileName )
 		{
+            
 			InitializeComponent();
 			if( File.Exists( fileName ) )
 			{
@@ -228,46 +239,48 @@ namespace Lanetor
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //TODO: after creating host network and its port
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //TODO: after creating host network and its port
-
-
-        }
+       
 
         private void frm_home_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Settings.bin"))
-            {
-                Settings settings = GetSettings();
-                this.Location = settings.Location;
-                this.Width = settings.Width;
-                this.Height = settings.Height;
-                inputTextBox.Font = settings.Font;
-                inputTextBox.WordWrap = settings.Wrapping;
-                
-            }
-            this.Text = GetFileName(currentFileName) + " - Lanetor";
-            inputTextBox.Focus();
+            
+            //if (File.Exists("Settings.bin"))
+            //{
+            //    Settings settings = GetSettings();
+            //    this.Location = settings.Location;
+            //    this.Width = settings.Width;
+            //    this.Height = settings.Height;
+            //    inputTextBox.Font = settings.Font;
+            //    inputTextBox.WordWrap = settings.Wrapping;
+
+            //}
+            //this.Text = GetFileName(currentFileName) + " - Lanetor";
+            //inputTextBox.Focus();
+
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
+            myIP = getMyLocalIP();
+            //just fill textbox with self ip
+            textIP.Text = myIP;
+            textRemoteIP.Text = myIP;
           
         }
 
-        private void frm_home_Resize(object sender, EventArgs e)
+        private string getMyLocalIP()
         {
-        
+            IPHostEntry host;
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach(IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "127.0.0.1";
         }
 
-        private void frm_home_Move(object sender, EventArgs e)
-        {
-            SaveSettings("LOCATION");
-        }
 
         private void frm_home_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -515,7 +528,95 @@ namespace Lanetor
             }
         }
 
+        private void buttonHost_Click(object sender, EventArgs e)
+        {
+          
+        }
 
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+            // converts from string to byte[]
+            System.Text.ASCIIEncoding enc =
+                    new System.Text.ASCIIEncoding();
+            byte[] msg = new byte[1464];
+            msg = enc.GetBytes(inputTextBox.Text);
+
+            // sending the message
+            sck.Send(msg);
+
+            // add to listbox
+            listPackets.Items.Add("You: " + inputTextBox.Text);
+
+            // clear txtMessage
+            inputTextBox.Clear();
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // bind socket 
+            epLocal = new IPEndPoint(IPAddress.Parse(textIP.Text),
+                            Convert.ToInt32(textPort.Text));
+            sck.Bind(epLocal);
+
+            
+            // connect to remote ip and port
+            epRemote = new IPEndPoint(IPAddress.Parse(textRemoteIP.Text),
+                                    Convert.ToInt32(textRemotePort.Text));
+            sck.Connect(epRemote);
+        }
+
+        
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // starts to listen to an specific port
+            buffer = new byte[1464];
+            sck.BeginReceiveFrom(buffer, 0, buffer.Length,
+                                     SocketFlags.None, ref epRemote,
+                            new AsyncCallback(OperatorCallBack), buffer);
+
+        }
+
+        private void OperatorCallBack(IAsyncResult ar)
+        {
+            try
+            {
+                int size = sck.EndReceiveFrom(ar, ref epRemote);
+
+                // check if theres actually information
+                if (size > 0)
+                {
+                    // used to help us on getting the data
+                    byte[] aux = new byte[1464];
+
+                    // gets the data
+                    aux = (byte[])ar.AsyncState;
+
+                    // converts from data[] to string
+                    System.Text.ASCIIEncoding enc =
+                                            new System.Text.ASCIIEncoding();
+                    string msg = enc.GetString(aux);
+
+                    // adds to listbox
+                    listPackets.Items.Add("Friend: " + msg);
+                }
+
+                // starts to listen again
+                buffer = new byte[1464];
+                sck.BeginReceiveFrom(buffer, 0,
+                                    buffer.Length, SocketFlags.None,
+                    ref epRemote, new AsyncCallback(OperatorCallBack), buffer);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
 
         private void encryptButton_Click(object sender, EventArgs e)
         {
