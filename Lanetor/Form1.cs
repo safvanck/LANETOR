@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.Sockets;
 
 //using System.Xml.Serialization;
+//CN
 namespace Lanetor
 {
     public partial class frm_home : Form
